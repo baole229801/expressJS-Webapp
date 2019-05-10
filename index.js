@@ -10,6 +10,7 @@ var port = 3000;
 var userRoute = require('./routes/user.route.js');
 var authRoute = require('./routes/auth.route.js');
 var authMiddleware = require('./middleware/auth.middleware.js');
+var productRoute = require('./routes/product.route');
 
 var bodyParser = require('body-parser');
 
@@ -34,6 +35,7 @@ app.get('/', function (request, response) {
 
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
+app.use('/products', productRoute);
 
 app.listen(port, function () {
     console.log('Server listening on port ' + port);
